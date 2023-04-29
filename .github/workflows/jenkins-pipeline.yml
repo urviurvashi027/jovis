@@ -3,7 +3,7 @@ name: Jenkins Pipeline
 on:
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   jenkins-pipeline:
