@@ -1,0 +1,20 @@
+name: Jenkins Pipeline
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  jenkins-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run Jenkins Pipeline
+      env:
+        CHANGE_TARGET: ${{ github.event.pull_request.head.ref }}
+      run: |
+        curl -X POST 'https://0c16-2401-4900-1f26-2504-39a1-5b6a-4d1-ce67.ngrok-free.app/job/new-latest-one/build' \
+          --header 'Content-Type: application/json' \
+          --header 'Authorization: Basic VXJ2YXNoaToxMTAzZGY5MzJjN2QyOWM5OGFiYTZhYmY2MWRiNjFmOThl' \
+          --data '{}'
